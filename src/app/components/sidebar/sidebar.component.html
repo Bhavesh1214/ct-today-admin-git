@@ -1,0 +1,32 @@
+<div class="h-screen text-[12px] bg-gray-800 text-white py-4">
+    <div class="flex flex-col">
+        @for (item of menuItems; track item;let i = $index) {
+        <ng-container>
+            <div (click)="toggleDropdown(i,item)"
+                class="p-2 flex justify-between items-center cursor-pointer hover:bg-gray-700">
+
+                <span class="flex items-center">
+                    <i [class]="item.icon + ' mr-2'"></i>
+                    {{ item.title }}
+                </span>
+                @if(item.subItems && item.subItems.length > 0){
+                <span class="rotate-arrow text-[10px]" [class.rotate-up]="item.open">
+                    <i class="fas fa-chevron-down "></i>
+                </span>
+                }
+            </div>
+            @if(item.open && item.subItems && item.subItems.length > 0){
+            <div class="dropdown-content">
+                <div class="flex flex-col pl-5">
+                    @for (subItem of item.subItems; track subItem;) {
+                    <div [routerLink]="subItem.url" class="p-2 cursor-pointer hover:bg-gray-600">
+                        {{ subItem?.title }}
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </ng-container>
+        }
+    </div>
+</div>

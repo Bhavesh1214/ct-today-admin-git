@@ -1,0 +1,204 @@
+<p-toast></p-toast>
+<div
+    class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="flex items-center justify-between my-3">
+        <p class="text-2xl font-bold text-gray-900 dark:text-white">
+            {{ id ? "Edit Categories" : "Add Categories" }}
+        </p>
+        <p-button icon="pi pi-arrow-left" routerLink="/app/category"></p-button>
+    </div>
+    <div class="p-3 rounded-lg bg-white shadow-md">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <input formControlName="title" id="title" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Title" />
+
+
+                    @for(validation of validationMessages.title; track validation){
+                    <div class="validate">
+                        @if(submitted && f['title'].errors){
+                        @if(f['title'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="parent_cid" class="block text-gray-700 text-sm font-bold mb-2">Category</label>
+                    <select formControlName="parent_cid" id="parent_cid"
+                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent">
+                        <option value="0">Select Category</option>
+                        <!-- @for(category of parentCategoryList; track category){ -->
+                        <option>
+                            Pre Engineering Building
+                        </option>
+
+                        <!-- } -->
+                    </select>
+                    <!-- @for(validation of validationMessages.parent_cid; track validation){
+            <div class="validate">
+              @if(submitted && f['parent_cid'].errors){
+              @if(f['parent_cid'].errors[validation?.type]){
+              <div class="text-red-600 text-sm">
+                {{ validation?.message }}
+              </div>
+              } }
+            </div>
+            } -->
+                </div>
+                <div class="mb-4">
+                    <label for="parent_cid" class="block text-gray-700 text-sm font-bold mb-2">Home Page Display</label>
+                    <select formControlName="parent_cid" id="parent_cid"
+                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent">
+                        <!-- @for(category of parentCategoryList; track category){ -->
+                        <option value="yes">
+                           Yes
+                        </option>
+                        <option value="no">
+                            No
+                         </option>
+
+                        <!-- } -->
+                    </select>
+                    <!-- @for(validation of validationMessages.parent_cid; track validation){
+            <div class="validate">
+              @if(submitted && f['parent_cid'].errors){
+              @if(f['parent_cid'].errors[validation?.type]){
+              <div class="text-red-600 text-sm">
+                {{ validation?.message }}
+              </div>
+              } }
+            </div>
+            } -->
+                </div>
+                <div class="mb-4">
+                    <label for="countries" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+                    <p-calendar [(ngModel)]="date" class="calendar" [ngModelOptions]="{standalone: true}" />
+                </div>
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Slug</label>
+                    <input formControlName="title" id="title" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Enter Slug" />
+
+
+                    <!-- @for(validation of validationMessages.title; track validation){
+                    <div class="validate">
+                        @if(submitted && f['title'].errors){
+                        @if(f['title'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    } -->
+                </div>
+                <div class="mb-4">
+                    <label for="parent_cid" class="block text-gray-700 text-sm font-bold mb-2">Select Home Page Category</label>
+                    <select formControlName="parent_cid" id="parent_cid"
+                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent">
+                        <!-- @for(category of parentCategoryList; track category){ -->
+                        <option value="yes">
+                           Prpanaroma
+                        </option>
+                       
+
+                        <!-- } -->
+                    </select>
+                    <!-- @for(validation of validationMessages.parent_cid; track validation){
+            <div class="validate">
+              @if(submitted && f['parent_cid'].errors){
+              @if(f['parent_cid'].errors[validation?.type]){
+              <div class="text-red-600 text-sm">
+                {{ validation?.message }}
+              </div>
+              } }
+            </div>
+            } -->
+                </div>
+                <div class="mb-4">
+                    <label for="meta_desc" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                    <textarea id="meta_desc" type="text"
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                      placeholder="Description" formControlName="meta_description"></textarea>
+                  </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 col-span-3">
+                <div class="mb-4">
+                  <label for="highlight_message" class="block text-gray-700 text-sm font-bold mb-2">Details</label>
+                  <p-editor  id="highlight_message"
+                    [style]="{ height: '250px' }"></p-editor>
+                  <!-- @for(validation of validationMessages.highlight_message; track validation){
+                  <div class="validate">
+                    @if(submitted && f['highlight_message'].errors){
+                    @if(f['highlight_message'].errors[validation?.type]){
+                    <div class="text-red-600 text-sm">
+                      {{ validation?.message }}
+                    </div>
+                    } }
+                  </div>
+                  } -->
+                </div>
+                </div>
+            <div class="mt-4 flex justify-end">
+                <p-button (click)="onSubmit()" label="Submit" type="button"></p-button>
+            </div>
+            <p-card
+            header="SEO Detail"
+            [style]="{ width: '100%', 'margin-bottom': '20px' }"
+          >
+            <div class="grid grid-cols-3 gap-4">
+              
+              <div class="mb-4">
+                <label
+                  for="meta-title"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Meta Title</label
+                >
+                <input
+                  formControlName="meta_title"
+                  id="meta-title"
+                  type="text"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                  placeholder="Meta Title"
+                />
+              </div>
+              
+              <div class="mb-4">
+                <label
+                  for="meta_desc"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Meta Description</label
+                >
+                <textarea
+                  formControlName="meta_description"
+                  id="meta_desc"
+                  type="text"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                  placeholder="Meta Description"
+                ></textarea>
+              </div>
+              <div class="mb-4">
+                <label
+                  for="meta_keyword"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Meta Keyword</label
+                >
+                <textarea
+                  formControlName="meta_keyword"
+                  id="meta_keyword"
+                  type="text"
+                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                  placeholder="Meta Keyword"
+                ></textarea>
+              </div>
+            </div>
+          </p-card>
+        </form>
+    </div>
+</div>
