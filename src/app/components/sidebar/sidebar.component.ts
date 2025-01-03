@@ -29,12 +29,30 @@ export class SidebarComponent {
       ],
     },
     {
-      title: 'News Management',
+      title: 'News Master',
       url: '',
       icon: 'fas fa-user',
       open: false,
       subItems: [
         { title: 'News', url: 'news' },
+      ],
+    },
+    {
+      title: 'Video Master',
+      url: '',
+      icon: 'fas fa-user',
+      open: false,
+      subItems: [
+        { title: 'Video', url: 'video' },
+      ],
+    },
+    {
+      title: 'Magazines',
+      url: '',
+      icon: 'fas fa-user',
+      open: false,
+      subItems: [
+        { title: 'Magazines', url: 'magazines' },
       ],
     },
     

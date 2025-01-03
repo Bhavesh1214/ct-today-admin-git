@@ -1,0 +1,59 @@
+<p-toast></p-toast>
+<div
+    class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="flex items-center justify-between my-3">
+        <p class="text-2xl font-bold text-gray-900 dark:text-white">
+            {{ id ? "Edit Video" : "Add Video" }}
+        </p>
+        <p-button icon="pi pi-arrow-left" routerLink="/app/video"></p-button>
+    </div>
+    <div class="p-3 rounded-lg bg-white shadow-md">
+        <form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <input formControlName="title" id="title" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Title" />
+
+
+                    @for(validation of validationMessages.title; track validation){
+                    <div class="validate">
+                        @if(submitted && f['title'].errors){
+                        @if(f['title'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Video Url</label>
+                    <input formControlName="videoUrl" id="title" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Video Url" />
+
+                    @for(validation of validationMessages.videoUrl; track validation){
+                    <div class="validate">
+                        @if(submitted && f['videoUrl'].errors){
+                        @if(f['videoUrl'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                
+                
+              
+            </div>
+
+            <div class="mt-4 flex justify-end">
+                <p-button (click)="onSubmit()" label="Submit" type="button">Submit</p-button>
+            </div>
+
+        </form>
+    </div>
+</div>
