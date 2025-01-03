@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CardModule } from 'primeng/card';
-import { ChipsModule } from 'primeng/chips';
+import { ChipModule } from 'primeng/chip';
 import { EditorModule } from 'primeng/editor';
 import { ToastModule } from 'primeng/toast';
 
@@ -16,7 +16,7 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     ButtonModule,
     EditorModule,
-    ChipsModule,
+    ChipModule,
     RouterModule,
     ToastModule,
     CardModule,
