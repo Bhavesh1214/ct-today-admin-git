@@ -1,0 +1,44 @@
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>
+<div
+  class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+  <div class="flex items-center justify-between my-3">
+    <p class="text-2xl font-bold text-gray-900 dark:text-white">Advertisments</p>
+    <p-button icon="pi pi-plus" routerLink="/app/advertisments/add"></p-button>
+  </div>
+
+  <div class="p-3 rounded-lg bg-white shadow-md">
+    <p-table [value]="categoryList" [tableStyle]="{ 'min-width': '60rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>S/No</th>
+          <th>Title</th>
+          <th>Url</th>
+         
+          <th>Action</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-category let-i="rowIndex">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ category.title }}</td>
+          <td>{{ category.videourl }}</td>
+          <td>
+            <p-tag [value]="category.status === 1 ? 'Active' : 'Inactive'"
+              [severity]="getSeverity(category.status)"></p-tag>
+          </td>
+          <td>
+            <i class="pi pi-pen-to-square text-[#ea580c] cursor-pointer"
+              routerLink="/app/category/edit/{{ category.cid }}"></i>
+            <i (click)="confirm2($event,category.cid)" class="pi pi-trash ms-3 text-[#b91c1c] cursor-pointer"></i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
+      [rowsPerPageOptions]="[10, 20, 50]">
+    </p-paginator>
+  </div>
+</div>

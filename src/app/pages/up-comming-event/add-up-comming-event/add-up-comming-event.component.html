@@ -1,0 +1,122 @@
+<p-toast></p-toast>
+<div
+    class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div class="flex items-center justify-between my-3">
+        <p class="text-2xl font-bold text-gray-900 dark:text-white">
+            {{ id ? "Edit Up Coming Event" : "Add Up Coming Event" }}
+        </p>
+        <p-button icon="pi pi-arrow-left" routerLink="/app/up-comming-event"></p-button>
+    </div>
+    <div class="p-3 rounded-lg bg-white shadow-md">
+        <form [formGroup]="upCommingForm" (ngSubmit)="onSubmit()">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                    <input formControlName="title" id="name" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="name" />
+                    @for(validation of validationMessages.title; track validation){
+                    <div class="validate">
+                        @if(submitted && f['title'].errors){
+                        @if(f['title'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Date</label>
+                    <input formControlName="date" id="name" type="date"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="name" />
+                    @for(validation of validationMessages.date; track validation){
+                    <div class="validate">
+                        @if(submitted && f['date'].errors){
+                        @if(f['date'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Focus</label>
+                    <input formControlName="focus" id="name" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Video Url" />
+
+                    @for(validation of validationMessages.focus; track validation){
+                    <div class="validate">
+                        @if(submitted && f['focus'].errors){
+                        @if(f['focus'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Month-Date</label>
+                    <input formControlName="monthDate" id="name" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Video Url" />
+
+                    @for(validation of validationMessages.monthDate; track validation){
+                    <div class="validate">
+                        @if(submitted && f['monthDate'].errors){
+                        @if(f['monthDate'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+              
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Location</label>
+                    <input formControlName="location" id="name" type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent"
+                        placeholder="Location" />
+
+                    @for(validation of validationMessages.location; track validation){
+                    <div class="validate">
+                        @if(submitted && f['location'].errors){
+                        @if(f['location'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Organisers/Contact</label>
+                    
+                        <textarea formControlName="organisersContact"  placeholder="Organisers/Contact"></textarea>
+
+                    @for(validation of validationMessages.organisersContact; track validation){
+                    <div class="validate">
+                        @if(submitted && f['organisersContact'].errors){
+                        @if(f['organisersContact'].errors[validation?.type]){
+                        <div class="text-red-600 text-sm">
+                            {{ validation?.message }}
+                        </div>
+                        } }
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="mt-4 flex justify-end">
+                <p-button (click)="onSubmit()" label="Submit" type="button">Submit</p-button>
+            </div>
+
+        </form>
+    </div>
+</div>

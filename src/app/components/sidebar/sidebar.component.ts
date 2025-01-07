@@ -55,6 +55,33 @@ export class SidebarComponent {
         { title: 'Magazines', url: 'magazines' },
       ],
     },
+    {
+      title: 'Testimonials',
+      url: '',
+      icon: 'fas fa-user',
+      open: false,
+      subItems: [
+        { title: 'Testimonials', url: 'testimonials' },
+      ],
+    },
+    {
+      title: 'Advertisments',
+      url: '',
+      icon: 'fas fa-user',
+      open: false,
+      subItems: [
+        { title: 'Advertisments', url: 'advertisments' },
+      ],
+    },
+    {
+      title: 'Up Comming Event',
+      url: '',
+      icon: 'fas fa-user',
+      open: false,
+      subItems: [
+        { title: 'Up Comming Event', url: 'up-comming-event' },
+      ],
+    },
     
     
   ];
